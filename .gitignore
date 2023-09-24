@@ -1,0 +1,6 @@
+test_db.sqlite
+test_out/
+__pycache__/
+.env
+run.sh
+.venv

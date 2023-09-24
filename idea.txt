@@ -1,0 +1,53 @@
+TODO: Add some logging
+
+Program starts:
+  s: Subs name
+  i: Total interval time (in hours)
+  f: The time format
+  t: The output file type
+  o: The output file path
+
+  To make a full cicle:
+    traffic-bot -s/--sub <str: sub_name> -i/--interval <int: hours> -f <int: format> -t <str: file_type> -o/--output <str: file_path>
+  To pipe existing data and convert:
+    traffic-bot -in out.json -f 24 -t json -o oout.json
+
+Store traffic in memmory:
+  Dict[str, List[int]]
+  data = {
+      "13:00": [1000, 2000],
+      "14:00": [1500, 1700],
+  }
+
+
+Write the data into json every our:
+  {
+      "13:00": [1000, 2000],
+      "14:00": [1500, 1700],
+  }
+
+Plot:
+  x = time
+  y = traffic
+
+
+  3000
+  2000 <average traffic from dict values>
+  1000
+      13:00 14:00 15:00
+
+
+csv:
+  13:00,14:00,15:00
+  1000,2000,3000
+  1500,1800,2000
+
+
+sqlite:
+  13:00,14:00,15:00
+  1000,2000,3000
+  1500,1800,2000
+
+
+stdout:
+  Just print the data
