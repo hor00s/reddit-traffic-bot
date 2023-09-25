@@ -53,7 +53,7 @@ class Bot:
             index = time.hour
         return index
 
-    def harvest(self, sub_name: str, cicles: int) -> None:
+    def harvest(self, sub_name: str, cicles: int, minute: int) -> None:
         log.success(f"Connected to subreddit '{sub_name}'")
         keys = list(self.data.keys())
         total = 0
@@ -62,7 +62,7 @@ class Bot:
             sub = self.reddit.subreddit(sub_name)
             time_now = dt.datetime.now()
             minutes = time_now.minute
-            if minutes == 0:
+            if minutes == minute:
                 active_users = sub.active_user_count
                 if self.time_format == 12:
                     key = keys[self._find_index(time_now)]

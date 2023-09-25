@@ -1,14 +1,16 @@
 TODO: Add some logging
+TODO: Check sqlite mode. There might be a bug
 
 Program starts:
   s: Subs name
-  i: Total interval time (in hours)
+  c: Total cicles (in hours)
   f: The time format
   t: The output file type
   o: The output file path
+  m: The minute that the program will run every hour
 
   To make a full cicle:
-    traffic-bot -s/--sub <str: sub_name> -i/--interval <int: hours> -f <int: format> -t <str: file_type> -o/--output <str: file_path>
+    traffic-bot -s/--sub <str: sub_name> -c/--cicles <int: hours> -f <int: format> -t <str: file_type> -o/--output <str: file_path> -m/--minute <int: minute = 0>
   To pipe existing data and convert:
     traffic-bot -in out.json -f 24 -t json -o oout.json
 

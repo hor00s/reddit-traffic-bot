@@ -69,6 +69,9 @@ def main() -> int:
         "-o", "--output", type=str, help="Choose the desired path for the outfile"
     )
     ap.add_argument("-in", "--input", type=str, help="Input file")
+    ap.add_argument(
+        "-m", "--minute", type=int, help="The minute the program will run", default=0
+    )
     args = vars(ap.parse_args())
 
     cicles = args["cicles"]
@@ -77,6 +80,7 @@ def main() -> int:
     sub_name = args["sub"]
     file_path = args["output"]
     in_file = args["input"]
+    minute = args["minute"]
 
     log.custom(f"{out_type.title()}", "mode", color=get_color("red_bold"))
     log.info(f"Output file = {file_path}")
@@ -85,7 +89,7 @@ def main() -> int:
 
     if in_file is None:
         bot = Bot(reddit, time_format)
-        bot.harvest(sub_name, cicles)
+        bot.harvest(sub_name, cicles, minute)
         data = bot.data
     else:
         with open(in_file, mode="r") as f:

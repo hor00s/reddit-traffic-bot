@@ -16,7 +16,7 @@ class TestBot(unittest.TestCase):
         _time = dt.datetime(year=1970, month=1, day=1, hour=time)
         key = bot._find_index(_time)
         value = keys[key]
-        time_to_str = f"{time}:00" if len(str(time)) == 2 else f"0{time}:00"        
+        time_to_str = f"{time}:00" if len(str(time)) == 2 else f"0{time}:00"
         self.assertEqual(value, time_to_str)
 
     def check_result_12f(self, time: int) -> None:
@@ -26,11 +26,11 @@ class TestBot(unittest.TestCase):
         key = bot._find_index(_time)
         value = keys[key]
         if time < 12:
-            mid = 'AM'
+            mid = "AM"
         else:
-            mid = 'PM'
+            mid = "PM"
             time = time - 12
-        time_to_str = f"{time}:00 {mid}" if len(str(time)) == 2 else f"0{time}:00 {mid}"        
+        time_to_str = f"{time}:00 {mid}" if len(str(time)) == 2 else f"0{time}:00 {mid}"
         self.assertEqual(value, time_to_str)
 
     def test_get_time(self) -> None:
