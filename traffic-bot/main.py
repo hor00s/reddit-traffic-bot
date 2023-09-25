@@ -46,7 +46,7 @@ def main() -> int:
     }
     ap = argparse.ArgumentParser()
     ap.add_argument(
-        "-i", "--interval", type=int, help="The total ammount of days to harvest data"
+        "-c", "--cicles", type=int, help="The total ammount of days to harvest data"
     )
     ap.add_argument(
         "-t",
@@ -71,7 +71,7 @@ def main() -> int:
     ap.add_argument("-in", "--input", type=str, help="Input file")
     args = vars(ap.parse_args())
 
-    interval = args["interval"]
+    cicles = args["cicles"]
     out_type = args["type"]
     time_format = args["format"]
     sub_name = args["sub"]
@@ -80,12 +80,12 @@ def main() -> int:
 
     log.custom(f"{out_type.title()}", "mode", color=get_color("red_bold"))
     log.info(f"Output file = {file_path}")
-    log.info(f"Interval = {interval}")
+    log.info(f"Total cicles = {cicles}")
     log.info(f"Time format = {time_format} hour based")
 
     if in_file is None:
         bot = Bot(reddit, time_format)
-        bot.harvest(sub_name, interval)
+        bot.harvest(sub_name, cicles)
         data = bot.data
     else:
         with open(in_file, mode="r") as f:

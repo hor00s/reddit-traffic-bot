@@ -53,7 +53,7 @@ class Bot:
             index = time.hour
         return index
 
-    def harvest(self, sub_name: str, hours: int) -> None:
+    def harvest(self, sub_name: str, cicles: int) -> None:
         log.success(f"Connected to subreddit '{sub_name}'")
         keys = list(self.data.keys())
         total = 0
@@ -68,12 +68,13 @@ class Bot:
                     key = keys[self._find_index(time_now)]
                 else:
                     key = keys[self._find_index(time_now)]
+                log.info(f"Added result for {key}")
                 self.data[key].append(active_users)
 
                 total += 1
-                log.success(f"Cicle finished. {total}/{hours}")
+                log.success(f"Cicle finished. {total}/{cicles}")
 
-            if total == hours:
+            if total == cicles:
                 break
 
-            time.sleep(50)
+            time.sleep(60)
