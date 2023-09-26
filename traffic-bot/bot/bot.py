@@ -68,11 +68,10 @@ class Bot:
                     key = keys[self._find_index(time_now)]
                 else:
                     key = keys[self._find_index(time_now)]
-                log.info(f"Added result for {key}")
                 self.data[key].append(active_users)
 
                 total += 1
-                log.success(f"Cicle finished. {total}/{cicles}")
+                log.success(f"Added result for {key}. {total}/{cicles}")
 
             if total == cicles:
                 break

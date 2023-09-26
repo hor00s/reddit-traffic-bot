@@ -23,18 +23,16 @@ types = (
     # Program('out', 'csv', 'csv'),
 )
 
-def run():
-    for type_ in types:
-        minute = dt.datetime.now().minute
-        command = f"python3 traffic-bot -s test -c 1 -f 24 -t {type_.type_} -o test_out/{type_.file_name}.{type_.ext} -m {minute}"
-        os.system(command)
+def run(type_):
+    minute = dt.datetime.now().minute
+    command = f"python3 traffic-bot -s test -c 1 -f 24 -t {type_.type_} -o test_out/{type_.file_name}.{type_.ext} -m {minute}"
+    os.system(command)
 
 procs = []
 
-for _ in types:
-    proc = mp.Process(target=run)
+for type_ in types:
+    proc = mp.Process(target=run, args=(type_,))
     procs.append(proc)
-
 
 for proc in procs:
     proc.start()
