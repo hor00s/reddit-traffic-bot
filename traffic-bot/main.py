@@ -40,7 +40,7 @@ def main() -> int:
     types: Dict[str, Callable[[_Data, Path], None]] = {
         "plot": to_png,
         "json": to_json,
-        # 'csv': to_csv,  temporarily disabled
+        'csv': to_csv,
         "sqlite": to_sqlite,
         "stdout": to_stdout,
     }
@@ -59,7 +59,7 @@ def main() -> int:
     ap.add_argument(
         "-f",
         "--format",
-        required=True,
+        default=24,
         type=int,
         choices=[12, 24],
         help="Choose the time format",

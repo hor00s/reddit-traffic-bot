@@ -1,6 +1,3 @@
-TODO: Add some logging
-TODO: Check sqlite mode. There might be a bug
-
 Program starts:
   s: Subs name
   c: Total cicles (in hours)

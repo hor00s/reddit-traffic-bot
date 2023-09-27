@@ -10,6 +10,7 @@ from sqlitemanager import (
 )
 from typing import (
     Any,
+    Dict,
 )
 
 
@@ -43,18 +44,33 @@ def to_png(data: _Data, path: Path) -> None:
 
 
 def to_csv(data: _Data, path: Path) -> None:
-    # FIXME: This doesn't format properly
+    data_copy: Dict[str, Any] = data.copy()
     formatted = ""
-    final = [list(data.keys())]
+    rows = []
 
-    for time_data in data.values():
-        final.append(time_data)  # type: ignore
+    most_populated = len(max(data_copy.values(), key=lambda i: len(i)))
+    for key in data_copy:
+        for _ in range(most_populated):
+            if len(data_copy[key]) < most_populated:
+                data_copy[key].append('')
 
-    for row in final:
-        formatted += ",".join(map(str, row))
-        formatted += "\n"
-    with open(path, mode="w") as f:
+    formatted += ','.join(map(str, data_copy.keys()))
+    formatted += '\n'
+
+    for i in range(most_populated):
+        row = []
+        for _, v in data_copy.items():
+            row.append(v[i])
+        rows.append(row.copy())
+        row.clear()
+
+    for row in rows:
+        formatted += ','.join(map(str, row))
+        formatted += '\n'
+
+    with open(path, mode='w') as f:
         f.write(formatted)
+
     print(formatted)
 
 

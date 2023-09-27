@@ -20,7 +20,7 @@ types = (
     Program('out', 'json', 'json'),
     Program('out', 'png', 'plot'),
     Program('out', 'sqlite', 'sqlite'),
-    # Program('out', 'csv', 'csv'),
+    Program('out', 'csv', 'csv'),
 )
 
 def run(type_):
