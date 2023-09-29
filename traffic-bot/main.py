@@ -1,6 +1,6 @@
 import os
 import sys
-import praw  # type: ignore
+import praw
 import json
 import argparse
 from bot import Bot
@@ -17,6 +17,8 @@ from visualizer import (
     to_json,
     to_sqlite,
     to_stdout,
+    to_pickle,
+    to_yaml,
 )
 from dotenv import (
     load_dotenv,
@@ -43,6 +45,8 @@ def main() -> int:
         'csv': to_csv,
         "sqlite": to_sqlite,
         "stdout": to_stdout,
+        "pickle": to_pickle,
+        "yaml": to_yaml,
     }
     ap = argparse.ArgumentParser()
     ap.add_argument(

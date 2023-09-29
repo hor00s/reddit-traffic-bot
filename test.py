@@ -21,6 +21,8 @@ types = (
     Program('out', 'png', 'plot'),
     Program('out', 'sqlite', 'sqlite'),
     Program('out', 'csv', 'csv'),
+    Program('out', 'pickle', 'pickle'),
+    Program('out', 'yaml', 'yaml'),
 )
 
 def run(type_):

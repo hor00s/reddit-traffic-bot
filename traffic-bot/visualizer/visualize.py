@@ -1,4 +1,5 @@
-import csv
+import yaml
+import pickle
 import matplotlib.pyplot as plt
 from pprint import pprint
 from pathlib import Path
@@ -21,6 +22,8 @@ __all__ = (
     "to_csv",
     "to_sqlite",
     "to_stdout",
+    "to_pickle",
+    "to_yaml",
 )
 
 
@@ -92,3 +95,18 @@ def to_sqlite(data: _Data, path: Path) -> None:
 
 def to_stdout(data: _Data, *_: Any) -> None:
     pprint(data)
+
+
+def to_pickle(data: _Data, path: Path) -> None:
+    with open(path, mode='wb') as f:
+        pickle.dump(data, f)
+
+    print(data)
+
+
+def to_yaml(data: _Data, path: Path) -> None:
+    yaml_str = yaml.dump(data)  # type: ignore
+    with open(path, mode='w') as f:
+        f.write(yaml_str)
+
+    print(yaml_str)
